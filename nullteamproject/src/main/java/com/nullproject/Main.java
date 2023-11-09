@@ -17,11 +17,7 @@ public class Main {
         containers = dockerClient.listContainersCmd().withShowAll(true).exec();
         containers.forEach(c -> System.out.println(c.getId() + " " + c.getState()));
         String id = containers.get(0).getId();
-        try {
-            dockerClient.stopContainerCmd(id).exec();
-        } catch (Exception e) {
-            System.out.println("HEEEEEEEEEREEEEEEEEEEEEEE                                                                            ");
-        }
+        dockerClient.stopContainerCmd(id).exec();
         Thread.sleep(1000);
         System.out.println("-------------------------ACTIVE CONTAINER INSTANCES-----------------------");
         containers = dockerClient.listContainersCmd().withShowAll(false).exec();
